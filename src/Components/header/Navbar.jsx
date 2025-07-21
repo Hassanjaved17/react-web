@@ -11,10 +11,9 @@ const Navbar = () => {
   const handleDarkModeToggle = () => setDarkMode(!darkMode);
 
   const linkClasses = (path) =>
-    `px-3 py-1 rounded transition-colors duration-300 ${
-      location.pathname === path
-        ? 'bg-red-500 text-white'
-        : 'hover:bg-red-500 hover:text-white'
+    `px-3 py-1 rounded transition-colors duration-300 ${location.pathname === path
+      ? 'bg-red-500 text-white'
+      : 'hover:bg-red-500 hover:text-white'
     }`;
 
   return (
