@@ -1,6 +1,10 @@
 import React from 'react';
-import 'react-slideshow-image/dist/styles.css';
-import { Slide } from 'react-slideshow-image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 
 const slideImages = [
   {
@@ -19,21 +23,33 @@ const slideImages = [
 
 const Slider = () => {
   return (
-    <div className="slide-container px-4 py-6">
-      <Slide arrows={true} autoplay={true} duration={3000} transitionDuration={700}>
-        {slideImages.map((slideImage, index) => (
-          <div key={index}>
+    <div className="px-4 py-6">
+      <Swiper
+        modules={[Autoplay, Pagination, EffectFade]}
+        spaceBetween={30}
+        slidesPerView={1}
+        loop={true} // 🔁 MUST be true
+        effect="fade"
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false, // 🔁 Keeps autoplay working after interaction
+        }}
+        pagination={{ clickable: true }}
+        speed={1000}
+      >
+        {slideImages.map((slide, index) => (
+          <SwiperSlide key={index}>
             <div
               className="h-[300px] md:h-[400px] lg:h-[500px] bg-cover bg-center flex items-center justify-center rounded-lg shadow-lg"
-              style={{ backgroundImage: `url(${slideImage.url})` }}
+              style={{ backgroundImage: `url(${slide.url})` }}
             >
               <div className="bg-white/70 text-black text-xl font-semibold px-6 py-3 rounded-md shadow-md">
-                {slideImage.caption}
+                {slide.caption}
               </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </Slide>
+      </Swiper>
     </div>
   );
 };
