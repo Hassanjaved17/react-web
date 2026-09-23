@@ -28,11 +28,11 @@ const Slider = () => {
         modules={[Autoplay, Pagination, EffectFade]}
         spaceBetween={30}
         slidesPerView={1}
-        loop={true} // 🔁 MUST be true
+        loop={true} //  MUST be true
         effect="fade"
         autoplay={{
           delay: 3000,
-          disableOnInteraction: false, // 🔁 Keeps autoplay working after interaction
+          disableOnInteraction: false, // Keeps autoplay working after interaction
         }}
         pagination={{ clickable: true }}
         speed={1000}
